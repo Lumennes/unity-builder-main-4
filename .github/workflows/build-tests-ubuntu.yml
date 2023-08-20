@@ -46,6 +46,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        projectName:
+          - UnityBuilderMain4
         #exclude:
           #- targetPlatform: Android
             #unityVersion: 2022.2.7f1
@@ -68,7 +70,7 @@ jobs:
           #- 2021.3.19f1
           #- 2022.1.24f1
           #- 2022.2.7f1
-          - 2023.1.9f1
+          - 2023.1.8f1
           - 2022.3.7f1
           - 2021.3.29f1
           - 2020.3.48f1
@@ -118,8 +120,15 @@ jobs:
       ###########################
       #          Upload         #
       ###########################
-      - uses: actions/upload-artifact@v3
+      #- uses: actions/upload-artifact@v3
+        #with:
+          #name: Build (${{ matrix.targetPlatform }} ${{ matrix.unityVersion }})
+          #path: build/${{ matrix.targetPlatform }}
+          #retention-days: 14
+          
+      - uses: Difegue/action-megacmd@master
         with:
-          name: Build (${{ matrix.targetPlatform }} ${{ matrix.unityVersion }})
-          path: build/${{ matrix.targetPlatform }}
-          retention-days: 14
+          args: put -c build/${{ matrix.targetPlatform }} /Unity_projects/${{ matrix.projectName }}/${{ matrix.projectName }}_${{ matrix.unityVersion }}_${{ matrix.targetPlatform }}/
+        env:
+          USERNAME: ${{ secrets.MEGA_USERNAME }}
+          PASSWORD: ${{ secrets.MEGA_PASSWORD }}
