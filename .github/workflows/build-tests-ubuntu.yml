@@ -70,8 +70,8 @@ jobs:
           #- 2021.3.19f1
           #- 2022.1.24f1
           #- 2022.2.7f1
-          - 2023.1.10f1
-          - 2023.1.9f1
+          # - 2023.1.10f1
+          # - 2023.1.9f1
           # - 2023.1.8f1
           # - 2023.1.7f1
           # - 2023.1.6f1
@@ -90,7 +90,7 @@ jobs:
           # - 2022.3.1f1
           # - 2022.3.0f1
           # - 2021.3.29f1
-          # - 2020.3.48f1
+           - 2020.3.48f1
         targetPlatform:
           #- StandaloneOSX # Build a macOS standalone (Intel 64-bit) with mono backend.
           - StandaloneWindows64 # Build a Windows 64-bit standalone with mono backend.
